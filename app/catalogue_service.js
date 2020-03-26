@@ -53,12 +53,7 @@ function countBooksByAuthor(author) {
 }
 
 function checkBookByTitle(title) {
-  for (i=0; i<catalogue.length; i++) {
-    if (catalogue[i].title === title) {
-      return true;
-    }
-  }
-  return false;
+  return catalogue.filter(book => book.title === title).length > 0; 
 }
 
 function countBooksByFirstLetter(letter) {
