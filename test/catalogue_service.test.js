@@ -30,6 +30,8 @@ describe("catalogueService", () => {
   describe("catalogueService.getQuantity", () => {
     test("returns quantity of book", () => {
       expect(catalogueService.getQuantity("A Place of Greater Safety")).toBe(11);
+    });
+    test("returns not in catalogue if book does not appear", () => {
       expect(catalogueService.getQuantity("Boy")).toBe("Not in the catalogue");
     });
   })
@@ -43,6 +45,15 @@ describe("catalogueService", () => {
         ]
       );
       expect(catalogueService.getBooksByAuthor("Stormzy")).toEqual([]);
+    });
+  })
+
+  describe("catalogueService.checkQuantity", () => {
+    test("returns true if there are at least as many books in stock as given quantity", () => {
+      expect(catalogueService.checkQuantity("By Night In Chile", 4)).toBe(true);
+    });
+    test("returns false if there are fewer books in stock than given quantity", () => {
+      expect(catalogueService.checkQuantity("By Night In Chile", 100)).toBe(false);
     });
   })
 
