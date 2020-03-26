@@ -72,7 +72,12 @@ function countBooksByFirstLetter(letter) {
 }
 
 function getQuantity(title) {
-  // Your code here
+  for (i=0; i<catalogue.length; i++) {
+    if (catalogue[i].title === title) {
+      return parseInt(catalogue[i].quantity);
+    }
+  }
+  return "Not in the catalogue";
 }
 
 function getBooksByAuthor(author) {

@@ -27,6 +27,13 @@ describe("catalogueService", () => {
     });
   })
 
+  describe("catalogueService.getQuantity", () => {
+    test("returns quantity of book", () => {
+      expect(catalogueService.getQuantity("A Place of Greater Safety")).toBe(11);
+      expect(catalogueService.getQuantity("Boy")).toBe("Not in the catalogue");
+    });
+  })
+
 });
 
 
