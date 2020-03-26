@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-const catalogue = [
+const stringCatalogue = [
   "The Catcher in the Rye by J.D. Salinger (10)",
   "Dracula by Bram Stoker (0)",
   "Between the Assassinations by Aravind Adiga (9)",
@@ -22,16 +22,53 @@ const catalogue = [
   "The Origin of Species by Charles Darwin (50)"
 ];
 
+//Convert string version of catalogue to object version
+function parseCatalogue(catalogue) {
+  const newCatalogue = [];
+  for (let book in catalogue) {
+    let byPosition = catalogue[book].indexOf(" by ");
+    let numPositionStart = catalogue[book].indexOf("\(");
+    let numPositionEnd = catalogue[book].indexOf("\)");
+
+    let title = catalogue[book].substring(0, byPosition);
+    let author = catalogue[book].substring(byPosition + 4, numPositionStart - 1);
+    let quantity = catalogue[book].substring(numPositionStart + 1, numPositionEnd);
+
+    newCatalogue.push({title,author,quantity});
+  }
+  return newCatalogue;
+}
+
+//Set catalogue as object version
+const catalogue = parseCatalogue(stringCatalogue);
+
 function countBooksByAuthor(author) {
-  // Your code here
+  let count = 0;
+  for (i=0; i<catalogue.length; i++) {
+    if (catalogue[i].author === author) {
+      count++;
+    }
+  }
+  return count;
 }
 
 function checkBookByTitle(title) {
-  // Your code here
+  for (i=0; i<catalogue.length; i++) {
+    if (catalogue[i].title === title) {
+      return true;
+    }
+  }
+  return false;
 }
 
 function countBooksByFirstLetter(letter) {
-  // Your code here
+  let count = 0;
+  for (let i = 0; i < catalogue.length; i++) {
+    if (catalogue[i].title[0].toLowerCase() === letter.toLowerCase()) {
+      count++;
+    }
+  }
+  return count;
 }
 
 function getQuantity(title) {
