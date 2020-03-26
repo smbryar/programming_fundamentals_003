@@ -43,13 +43,7 @@ function parseCatalogue(catalogue) {
 const catalogue = parseCatalogue(stringCatalogue);
 
 function countBooksByAuthor(author) {
-  let count = 0;
-  for (i=0; i<catalogue.length; i++) {
-    if (catalogue[i].author === author) {
-      count++;
-    }
-  }
-  return count;
+  return catalogue.filter(book => book.author === author).length;
 }
 
 function checkBookByTitle(title) {
