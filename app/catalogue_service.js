@@ -57,13 +57,7 @@ function checkBookByTitle(title) {
 }
 
 function countBooksByFirstLetter(letter) {
-  let count = 0;
-  for (let i = 0; i < catalogue.length; i++) {
-    if (catalogue[i].title[0].toLowerCase() === letter.toLowerCase()) {
-      count++;
-    }
-  }
-  return count;
+  return catalogue.filter(book => book.title[0].toLowerCase() === letter.toLowerCase()).length;
 }
 
 function getQuantity(title) {
