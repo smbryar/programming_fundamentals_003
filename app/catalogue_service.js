@@ -67,12 +67,7 @@ function getBooksByAuthor(author) {
 }
 
 function checkQuantity(title, quantity) {
-  for (i=0; i<catalogue.length; i++) {
-    if (catalogue[i].title === title && catalogue[i].quantity >= quantity) {
-      return true;
-    }
-  }
-  return false;
+  return catalogue.filter(book => book.title === title && book.quantity >= quantity).length > 0;
 }
 
 module.exports = {
