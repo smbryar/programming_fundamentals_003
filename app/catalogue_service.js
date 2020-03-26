@@ -56,10 +56,7 @@ function countBooksByFirstLetter(letter) {
 
 function getQuantity(title) {
   const foundBook = catalogue.find(book => book.title === title);
-  if (foundBook) {
-    return foundBook.quantity;
-  }
-  return 0;
+  return foundBook ? foundBook.quantity : 0;
 }
 
 function getBooksByAuthor(author) {
