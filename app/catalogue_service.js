@@ -32,7 +32,7 @@ function parseCatalogue(catalogue) {
 
     let title = catalogue[book].substring(0, byPosition);
     let author = catalogue[book].substring(byPosition + 4, numPositionStart - 1);
-    let quantity = catalogue[book].substring(numPositionStart + 1, numPositionEnd);
+    let quantity = parseInt(catalogue[book].substring(numPositionStart + 1, numPositionEnd));
 
     newCatalogue.push({title,author,quantity});
   }
@@ -74,14 +74,14 @@ function countBooksByFirstLetter(letter) {
 function getQuantity(title) {
   for (i=0; i<catalogue.length; i++) {
     if (catalogue[i].title === title) {
-      return parseInt(catalogue[i].quantity);
+      return catalogue[i].quantity;
     }
   }
   return "Not in the catalogue";
 }
 
 function getBooksByAuthor(author) {
-  // Your code here
+  return catalogue.filter(book => book.author === author);
 }
 
 function checkQuantity(title, quantity) {
