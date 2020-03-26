@@ -55,12 +55,11 @@ function countBooksByFirstLetter(letter) {
 }
 
 function getQuantity(title) {
-  for (i=0; i<catalogue.length; i++) {
-    if (catalogue[i].title === title) {
-      return catalogue[i].quantity;
-    }
+  const foundBook = catalogue.find(book => book.title === title);
+  if (foundBook) {
+    return foundBook.quantity;
   }
-  return "Not in the catalogue";
+  return 0;
 }
 
 function getBooksByAuthor(author) {

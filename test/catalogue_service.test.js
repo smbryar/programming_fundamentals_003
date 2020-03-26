@@ -32,7 +32,7 @@ describe("catalogueService", () => {
       expect(catalogueService.getQuantity("A Place of Greater Safety")).toBe(11);
     });
     test("returns not in catalogue if book does not appear", () => {
-      expect(catalogueService.getQuantity("Boy")).toBe("Not in the catalogue");
+      expect(catalogueService.getQuantity("Boy")).toBe(0);
     });
   })
 
